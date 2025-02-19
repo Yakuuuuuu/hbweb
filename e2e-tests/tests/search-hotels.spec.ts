@@ -10,8 +10,8 @@ test.beforeEach(async ({ page }) => {
 
   await expect(page.getByRole("heading", { name: "Sign In" })).toBeVisible();
 
-  await page.locator("[name=email]").fill("1@1.com");
-  await page.locator("[name=password]").fill("password123");
+  await page.locator("[name=email]").fill("samr@t.com");
+  await page.locator("[name=password]").fill("123456");
 
   await page.getByRole("button", { name: "Login" }).click();
 
@@ -25,7 +25,7 @@ test("should show hotel search results", async ({ page }) => {
   await page.getByRole("button", { name: "Search" }).click();
 
   await expect(page.getByText("Hotels found in Dublin")).toBeVisible();
-  await expect(page.getByText("Dublin Getaways")).toBeVisible();
+  await expect(page.getByText("shinta mani")).toBeVisible();
 });
 
 test("should show hotel detail", async ({ page }) => {
@@ -34,7 +34,7 @@ test("should show hotel detail", async ({ page }) => {
   await page.getByPlaceholder("Where are you going?").fill("Dublin");
   await page.getByRole("button", { name: "Search" }).click();
 
-  await page.getByText("Dublin Getaways").click();
+  await page.getByText("shinta mani").click();
   await expect(page).toHaveURL(/detail/);
   await expect(page.getByRole("button", { name: "Book now" })).toBeVisible();
 });
@@ -51,7 +51,7 @@ test("should book hotel", async ({ page }) => {
 
   await page.getByRole("button", { name: "Search" }).click();
 
-  await page.getByText("Dublin Getaways").click();
+  await page.getByText("shinta mani").click();
   await page.getByRole("button", { name: "Book now" }).click();
 
   await expect(page.getByText("Total Cost: £357.00")).toBeVisible();
@@ -68,5 +68,5 @@ test("should book hotel", async ({ page }) => {
   await expect(page.getByText("Booking Saved!")).toBeVisible();
 
   await page.getByRole("link", { name: "My Bookings" }).click();
-  await expect(page.getByText("Dublin Getaways")).toBeVisible();
+  await expect(page.getByText("shinta mani")).toBeVisible();
 });
